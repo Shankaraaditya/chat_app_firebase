@@ -61,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
             CupertinoButton(
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return signUp();
+                  return SignUp();
                 }));
               },
               child: Text("Signup"),
