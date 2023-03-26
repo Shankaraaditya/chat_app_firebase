@@ -12,7 +12,7 @@ class UserModel {
   // map se user model ko construct kar ske islie ek constructor aur banana hoga key value type ka
   // kyuki firebase me values bhi key value pair me insert hoti hai
   UserModel.fromMap(Map<String, dynamic> map) {
-    // ye map se object banane ke kaam aayega
+    // ye map se object banane ke kaam aayega / user model ka object .. kyuki firebase se jo data aayega usko isi ke sahare UI pe dikhayege
     uid = map["uid"];
     fullname = map["fullname"];
     email = map["email"];

@@ -1,4 +1,7 @@
+import 'package:chat_app_firebase/pages/completeProfile.dart';
 import 'package:chat_app_firebase/pages/home_page.dart';
+import 'package:chat_app_firebase/pages/loginPage.dart';
+import 'package:chat_app_firebase/pages/signupPage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +19,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const HomePage(),
+      theme: ThemeData.dark(),
+      home: LoginPage(),
     );
   }
 }
