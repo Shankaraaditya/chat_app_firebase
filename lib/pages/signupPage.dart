@@ -14,11 +14,12 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+
   TextEditingController emailController = TextEditingController();
   TextEditingController passController = TextEditingController();
   TextEditingController cpassController = TextEditingController();
 
-  void checkValues() {
+  checkValues() async {
     String email = emailController.text.trim();
     String pass = passController.text.trim();
     String cpass = cpassController.text.trim();
@@ -34,12 +35,13 @@ class _SignUpState extends State<SignUp> {
     }
   }
 
-  void signUp(String email, String pass) async {
-    UserCredential? credential;
+  signUp(String email, String pass) async {
+    UserCredential ?credential;
 
     try {
       credential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: pass);
+      print("/////// SUCCESS Sign up///////////");
     } on FirebaseAuthException catch (exception) {
       // ignore: avoid_print
       print(exception.code
@@ -50,13 +52,14 @@ class _SignUpState extends State<SignUp> {
     // to yha se authentication ka kaam khtm haii.. yha firebase cloudstore ka kaam
     // suru hota hai --->> yaha ham ek field (ek document) banayege apne user ke liye
 
+///////////////////// FIRESTORE DATABASE CREATION ////////////////////////
     if (credential != null) {
       String uid = credential
           .user!.uid; // user ki unique id firebase khud he bana deta hai
 
       UserModel newUser = UserModel(
-        uid: uid,
-        email: email,
+        uid: uid,   // uid to uska credential he hoga.. jo firebase khud bana ke dega
+        email: email,  // email jo user dala hai 
         fullname: "",
         profilepic: "",
       );
@@ -113,11 +116,16 @@ class _SignUpState extends State<SignUp> {
               ),
               CupertinoButton(
                 onPressed: () {
-                  checkValues(); 
+                  // checkValues();
+                  signUp(emailController.text.trim(), passController.text.trim());
                 },
                 color: Colors.deepPurpleAccent,
                 child: const Text("Sign up"),
-              )
+              ),
+              const SizedBox(
+                height: 40,
+              ),
+             
             ],
           ),
         )),

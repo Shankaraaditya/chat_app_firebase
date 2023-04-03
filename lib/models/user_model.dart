@@ -28,5 +28,5 @@ class UserModel {
       "email": email,
       "profilepic": profilepic
     };
-  }
+  }   
 }
